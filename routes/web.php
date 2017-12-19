@@ -11,6 +11,19 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return redirect('home');
+    } else {
+        return view('welcome');
+    }
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('login/{provider}', 'Auth\RegisterController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
