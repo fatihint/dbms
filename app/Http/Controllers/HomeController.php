@@ -21,8 +21,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        switch ($request->user()->role_id) {
+            case 1:
+                return redirect('/admin');
+                break;
+            case 2:
+                return redirect('/personel');
+                break;
+            case 3:
+                return redirect('/customer');
+                break;
+            default:
+                return redirect('/customer');
+        }
     }
 }
