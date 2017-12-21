@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="/admin/order">
+                <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">İstatistik Grafikleri</span>
                 </a>
@@ -61,7 +61,7 @@
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="/order">
+                <a class="nav-link" href="/admin/orders">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">Sipariş Listesi</span>
                 </a>
@@ -73,30 +73,13 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMulti">
                     <li>
-                        <a href="#">Yönetici</a>
+                        <a href="#">Personel Listesi</a>
                     </li>
 
                     <li>
-                        <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Personel</a>
-                        <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                            <li>
-                                <a href="#">Eren</a>
-                            </li>
-                            <li>
-                                <a href="#">Baran</a>
-                            </li>
-                            <li>
-                                <a href="#">Fatih</a>
-                            </li>
-                        </ul>
+                        <a href="#">Müşteri Listesi</a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-link"></i>
-                    <span class="nav-link-text">Link</span>
-                </a>
             </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
@@ -242,7 +225,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" href="{{url('/logout')}}">Logout</a>
                     </div>
                 </div>
             </div>
