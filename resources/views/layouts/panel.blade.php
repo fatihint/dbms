@@ -22,6 +22,8 @@
 
     <!-- Page level plugin CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
     <!-- Custom styles for this template-->
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sb-admin.css') }}">
