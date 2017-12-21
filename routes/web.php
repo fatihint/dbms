@@ -36,17 +36,17 @@ Route::post('admin/products/{$id}', 'Admin\AdminProductsController@update');
 Route::delete('admin/products/{$id}', 'Admin\AdminProductsController@delete');
 
 Route::get('/panel',function (){
-    return view('layouts/panelLayout');
+    return view('layouts/panel');
 });
 Route::get('/menu',function (){
-    return view('Staff/menu');
+    return view('admin/menu');
 });
 Route::get('/order',function (){
-    return view('Staff/order');
+    return view('admin/order');
 });
 Route::get('/profile',function (){
-    return view('Staff/profile');
+    return view('admin/profile');
 });
-Route::get('/detailProduct',function (){
-    return view('admin/product-details');
+Route::get('/product',function (){
+    return view('admin/product');
 });
