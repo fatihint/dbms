@@ -16,7 +16,7 @@ class AdminProductsController extends Controller
     public function index($id = NULL)
     {
         // show all products
-        return "qwe";
+        return view('admin.products');
     }
 
     /**
@@ -46,9 +46,11 @@ class AdminProductsController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id = NULL)
     {
-        //
+        return view('admin.products')->with(
+            ['id' => $id]
+        );
     }
 
     /**

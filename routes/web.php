@@ -29,6 +29,7 @@ Route::get('login/{provider}', 'Auth\RegisterController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 
 Route::get('admin', 'Admin\AdminController@index');
+//Route::get('admin/products/', 'Admin\AdminProductsController@index');
 Route::get('admin/products/{id?}', 'Admin\AdminProductsController@show');
 Route::post('admin/products', 'Admin\AdminProductsController@create');
 Route::post('admin/products/{$id}', 'Admin\AdminProductsController@update');
@@ -47,5 +48,5 @@ Route::get('/profile',function (){
     return view('Staff/profile');
 });
 Route::get('/detailProduct',function (){
-    return view('Staff/detailProduct');
+    return view('admin/product-details');
 });

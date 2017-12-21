@@ -42,19 +42,19 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="/admin">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Anasayfa</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="istatistik.php">
+                <a class="nav-link" href="/admin/order">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">İstatistik Grafikleri</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="/menu">
+                <a class="nav-link" href="/admin/products">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Menü</span>
                 </a>

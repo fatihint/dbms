@@ -1,4 +1,4 @@
-@extends('layouts.panelLayout')
+@extends('layouts.panel')
 @section('content')
     <div class="card-body">
       <div class="table-responsive">

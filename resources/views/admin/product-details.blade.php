@@ -1,6 +1,7 @@
-@extends('layouts.panelLayout')
+@extends('layouts.panel')
 @section('content')
-    <style>.productbox {
+    <style>
+        .productbox {
             background-color:#ffffff;
             padding:40px;
             margin-bottom:10px;
@@ -22,7 +23,8 @@
         .pricetext {
             font-weight:bold;
             font-size:1.4em;
-        }</style>
+        }
+    </style>
     <div class="col-md-4 column productbox">
         <img src="http://placehold.it/460x250/e67e22/ffffff&text=HTML5" class="img-responsive">
         <div class="producttitle">Product 2</div>

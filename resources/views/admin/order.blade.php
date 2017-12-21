@@ -1,4 +1,4 @@
-@extends('layouts.panelLayout')
+@extends('layouts.panel')
 @section('content')
 <h1>siparislerin düştüğü sayfa </h1>
 <div class="card-body">
