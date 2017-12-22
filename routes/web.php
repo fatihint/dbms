@@ -42,6 +42,13 @@ Route::get('admin/orders/{id}', 'Admin\AdminOrdersController@show');
 Route::post('admin/orders/{id}', 'Admin\AdminOrdersController@update');
 Route::delete('admin/orders/{id}', 'Admin\AdminOrdersController@destroy');
 
+Route::get('admin/personels/', 'Admin\AdminPersonelsController@index');
+Route::get('admin/personels/{id}', 'Admin\AdminPersonelsController@show');
+Route::post('admin/personels/','Admin\AdminPersonelsController@create');
+
+Route::get('admin/customers/', 'Admin\AdminCustomers@index');
+Route::get('admin/customers/{id}', 'Admin\AdminCustomersController@show');
+
 Route::get('personel/products', 'Personel\PersonelProductsController@index');
 Route::get('personel/products/{id?}', 'Personel\PersonelProductsController@show');
 Route::get('personel/orders', 'Personel\PersonelOrdersController@index');

@@ -12,4 +12,3 @@ class PersonelController extends Controller
         return view('personel.orders');
     }
 }
-}

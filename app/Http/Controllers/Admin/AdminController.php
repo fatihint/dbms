@@ -21,4 +21,9 @@ class AdminController extends Controller
     {
         return view('admin.new-product');
     }
+
+    public function newPersonel()
+    {
+        return view('admin.new-personel');
+    }
 }
