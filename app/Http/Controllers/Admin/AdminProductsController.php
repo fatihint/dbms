@@ -3,30 +3,46 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminProductsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show all products.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id = NULL)
+    public function index()
     {
-        // show all products
-        return view('admin.products');
+
+        $products = Product::all();
+
+        return view('admin.products')->with(
+            ["products" => $products]
+        );
+
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Insert new product
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        $product = new Product;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->image = $request->image;
+        $product->user_id = Auth::user()->id;
+        $product->created_at = date('Y-m-d H:i:s');
+        $product->updated_at = date('Y-m-d H:i:s');
+        $product->save();
+
     }
 
     /**
@@ -41,16 +57,24 @@ class AdminProductsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified product with id.
      *
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id = NULL)
+    public function show($id)
     {
-        return view('admin.products')->with(
-            ['id' => $id]
-        );
+
+        $product = Product::find($id);
+
+        if ($product) {
+            return view('admin.products')->with(
+                ["product" => $product]
+            );
+        } else {
+            return redirect('/admin/products');
+        }
+
     }
 
     /**
@@ -68,11 +92,17 @@ class AdminProductsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update($id, Request $request)
     {
+
+        $product = Product::find($id);
+
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->updated_at = date('Y-m-d H:i:s');
+        $product->save();
 
     }
 
@@ -82,8 +112,8 @@ class AdminProductsController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        Product::destroy($id);
     }
 }
