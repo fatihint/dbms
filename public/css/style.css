@@ -100,3 +100,11 @@ html, body {
     font-weight:bold;
     font-size:1.4em;
 }
+/*----------Personel------*/
+#personels.details li {
+    list-style: none;
+}
+#personels li {
+    margin-bottom:10px;
+
+}

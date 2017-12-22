@@ -16,6 +16,11 @@
     <a href="/admin/products">Go Back</a>
         @else
         @section('content')
+            <div class="pull-right top-page-ui">
+                <a href="new-product" class="btn btn-primary pull-right">
+                    <i class="fa fa-plus-circle fa-lg"></i> Yeni Ürün Ekle
+                </a>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -51,6 +56,7 @@
                     </table>
                 </div>
             </div>
+    </div>
 
 
     @endsection
