@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Product;
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Mockery\Exception;
 
 class AdminProductsController extends Controller
 {
@@ -34,15 +35,22 @@ class AdminProductsController extends Controller
     public function create(Request $request)
     {
 
+        try {
+            $request->file('image')->storeAs('public/menu-images', $request->name . "." .$request->image->extension());
+        } catch (Exception $e) {
+            dd($e);
+        }
+
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price;
-        $product->image = $request->image;
+        $product->image = $request->name . "." . $request->image->extension();
         $product->user_id = Auth::user()->id;
         $product->created_at = date('Y-m-d H:i:s');
         $product->updated_at = date('Y-m-d H:i:s');
         $product->save();
 
+        return redirect('/admin/products/'. $product->id);
     }
 
     /**
@@ -67,9 +75,19 @@ class AdminProductsController extends Controller
 
         $product = Product::find($id);
 
+        $exists = Storage::disk('local')->exists('public/menu-images/'. $product->name .'.png');
+
+        if ($exists) {
+            $ext = '.png';
+        } else {
+            $ext = '.jpeg';
+        }
+
+        $path = asset('storage/menu-images/' . $product->name . $ext);
+
         if ($product) {
             return view('admin.products')->with(
-                ["product" => $product]
+                ["product" => $product, "path" => $path]
             );
         } else {
             return redirect('/admin/products');

@@ -4,7 +4,7 @@
         <div id="product-detail">
             <div class="col-md-4 column productbox">
                 <div class="producttitle">{{$product->id}}</div>
-                <img src="http://placehold.it/460x250/e67e22/ffffff&text=HTML5" class="img-responsive">
+                <img src="{{$path}}" class="img-responsive" width="100%">
                 <div class="productprice"><div class="pull-right"></div>
                     <input class="form-control" type="text" placeholder="Ürün İsmi" value="{{$product->name}}">
                     <br>
@@ -17,7 +17,7 @@
         @else
         @section('content')
             <div class="pull-right top-page-ui">
-                <a href="new-product" class="btn btn-primary pull-right">
+                <a href="/admin/products/new" class="btn btn-primary pull-right">
                     <i class="fa fa-plus-circle fa-lg"></i> Yeni Ürün Ekle
                 </a>
             </div>

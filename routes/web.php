@@ -30,6 +30,7 @@ Route::get('login/{provider}', 'Auth\RegisterController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 
 Route::get('admin', 'Admin\AdminController@index');
+Route::get('admin/products/new', 'Admin\AdminController@newProduct');
 
 Route::get('admin/products/', 'Admin\AdminProductsController@index');
 Route::get('admin/products/{id}', 'Admin\AdminProductsController@show');
