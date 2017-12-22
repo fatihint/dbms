@@ -35,3 +35,9 @@ Route::get('admin/products/{id}', 'Admin\AdminProductsController@show');
 Route::post('admin/products', 'Admin\AdminProductsController@create');
 Route::post('admin/products/{$id}', 'Admin\AdminProductsController@update');
 Route::delete('admin/products/{$id}', 'Admin\AdminProductsController@destroy');
+
+Route::get('personel/products', 'Personel\PersonelProductsController@index');
+Route::get('personel/products/{id?}', 'Personel\PersonelProductsController@show');
+Route::get('personel/orders', 'Personel\PersonelOrdersController@index');
+Route::get('personel/orders/{id?}', 'Personel\PersonelOrdersController@show');
+Route::post('personel/orders/{id}', 'Personel\PersonelOrdersController@accept');
