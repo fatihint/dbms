@@ -42,9 +42,15 @@ Route::get('/personels',function (){
     return view('admin/personels');
 });
 Route::get('/personels/{id}',function (){
-    $id = 1;
+    $idd = 1;
     return view('admin/personels')->with(
         ["id"=>1]
+    );
+});
+Route::get('/orders/{id}',function (){
+    $id = 2;
+    return view('admin/orders')->with(
+        ["id"=>2]
     );
 });
 Route::get('/orders',function (){
@@ -58,4 +64,7 @@ Route::get('/products',function (){
 });
 Route::get('/new-product',function (){
     return view('admin/new-product');
+});
+Route::get('/new-personel',function (){
+    return view('admin/new-personel');
 });

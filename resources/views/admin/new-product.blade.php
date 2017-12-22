@@ -5,14 +5,7 @@
 
     <form class="form-horizontal">
         <fieldset>
-
-            <!-- Form Name -->
             <legend>Yeni Ürün Ekle</legend>
-
-            <!-- Text input-->
-
-
-            <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="product_name">Ürün İsmi</label>
                 <div class="col-md-4">
@@ -21,7 +14,6 @@
                 </div>
             </div>
 
-            <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="product_name_fr">Fiyat</label>
                 <div class="col-md-4">
@@ -30,27 +22,18 @@
                 </div>
             </div>
 
-
-
-            <!-- Text input--
-                    <!-- File Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="filebutton">main_image</label>
                         <div class="col-md-4">
                             <input id="filebutton" name="filebutton" class="input-file" type="file">
                         </div>
                     </div>
-
-                    <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
                         <div class="col-md-4">
                             <button id="singlebutton" name="singlebutton" class="btn btn-primary">EKLE</button>
                         </div>
                     </div>
-
         </fieldset>
     </form>
-
-
 @endsection
