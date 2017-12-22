@@ -1,4 +1,4 @@
-@if($id)
+@if(@isset($id))
     <p>Bura urun {{$id}}</p>
     <a href="/admin/products">Go Back</a>
     @else
@@ -10,4 +10,3 @@
     <br>
 
 @endif
-
