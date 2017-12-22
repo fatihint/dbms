@@ -50,18 +50,12 @@ class AdminProductsController extends Controller
         $product->updated_at = date('Y-m-d H:i:s');
         $product->save();
 
-        return redirect('/admin/products/'. $product->id);
-    }
+        $message = "Urun basariyla eklendi";
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('admin.products')->with(
+            ['message' => $message, 'product' => $product]
+        );
+
     }
 
     /**
@@ -96,17 +90,6 @@ class AdminProductsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -116,12 +99,16 @@ class AdminProductsController extends Controller
     {
 
         $product = Product::find($id);
-
         $product->name = $request->name;
         $product->price = $request->price;
         $product->updated_at = date('Y-m-d H:i:s');
         $product->save();
 
+        $message = "Urun basariyla guncellendi";
+
+        return view('admin.products')->with(
+            ['message' => $message, 'product' => $product]
+        );
     }
 
     /**
@@ -133,5 +120,11 @@ class AdminProductsController extends Controller
     public function destroy($id)
     {
         Product::destroy($id);
+        $message = "Urun basariyla silindi";
+
+        return view('admin.products')->with(
+            ['message' => $message]
+        );
+
     }
 }

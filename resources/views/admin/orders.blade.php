@@ -10,6 +10,7 @@
             <th>Fiyatı</th>
             <th>Verildiği zaman</th>
             <th>Durum</th>
+            <th>Islem</th>
 
         </tr>
         </thead>
@@ -20,6 +21,7 @@
             <th>Fiyatı</th>
             <th>Verildiği zaman</th>
             <th>Durum</th>
+            <th>Islem</th>
         </tr>
         </tfoot>
         <tbody>
@@ -29,7 +31,7 @@
             <td>Singapore</td>
             <td>29</td>
             <td>2011/06/27</td>
-
+            <td><a  href="/admin/orders/1" class="btn btn-success ">Detay</a></td>
         </tr>
         <tr>
             <td>Donna Snider</td>
@@ -37,7 +39,7 @@
             <td>New York</td>
             <td>27</td>
             <td>2011/01/25</td>
-
+            <td><a  href="/admin/orders/1" class="btn btn-success ">Detay</a></td>
         </tr>
         </tbody>
     </table>
