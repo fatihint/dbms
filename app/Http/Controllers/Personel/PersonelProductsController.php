@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Personel;
 
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -9,7 +10,11 @@ class PersonelProductsController extends Controller
 {
     public function index()
     {
-        return view('personel.products');
+        $products = Product::all();
+
+        return view('personel.products')->with(
+            ["products" => $products]
+        );
     }
 
     /**
@@ -20,9 +25,15 @@ class PersonelProductsController extends Controller
      */
     public function show($id)
     {
-        return view('personel.products')->with(
-            ['id' => $id]
-        );
+        $product = Product::find($id);
+
+        if ($product) {
+            return view('personel.products')->with(
+                ["product" => $product]
+            );
+        } else {
+            return redirect('/personel/products');
+        }
     }
 
     /**

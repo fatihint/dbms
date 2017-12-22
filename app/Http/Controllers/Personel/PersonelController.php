@@ -9,7 +9,7 @@ class PersonelController extends Controller
 {
     public function index()
     {
-        return view('personel/home');
+        return view('personel.orders');
     }
 }
 }
