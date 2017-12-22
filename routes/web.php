@@ -31,7 +31,6 @@ Route::get('login/{provider}/callback', 'Auth\RegisterController@handleProviderC
 
 Route::get('admin', 'Admin\AdminController@index');
 Route::get('admin/products/new', 'Admin\AdminController@newProduct');
-
 Route::get('admin/products/', 'Admin\AdminProductsController@index');
 Route::get('admin/products/{id}', 'Admin\AdminProductsController@show');
 Route::post('admin/products', 'Admin\AdminProductsController@create');

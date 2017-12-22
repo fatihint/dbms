@@ -8,11 +8,7 @@
         {{ csrf_field() }}
 
         <fieldset>
-
-            <!-- Form Name -->
             <legend>Yeni Ürün Ekle</legend>
-
-            <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="product_name">Ürün İsmi</label>
                 <div class="col-md-4">
@@ -21,7 +17,6 @@
                 </div>
             </div>
 
-            <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="product_name_fr">Fiyat</label>
                 <div class="col-md-4">
@@ -30,27 +25,18 @@
                 </div>
             </div>
 
-
-
-            <!-- Text input--
-                    <!-- File Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="filebutton">Image</label>
                         <div class="col-md-4">
                             <input id="filebutton" name="image" class="input-file" type="file">
                         </div>
                     </div>
-
-                    <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
                         <div class="col-md-4">
                             <input type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary" value="Kaydet">
                         </div>
                     </div>
-
         </fieldset>
     </form>
-
-
 @endsection

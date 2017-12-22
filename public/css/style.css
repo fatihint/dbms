@@ -80,6 +80,7 @@ html, body {
 }
 
 /*----------product-detail------*/
+
 #product-detail.productbox {
     background-color:#ffffff;
     padding:40px;
@@ -107,4 +108,38 @@ html, body {
 #personels li {
     margin-bottom:10px;
 
+}
+
+/*---------- Profile  ------*/
+
+#profile body {
+    background-color: #eaeaea;
+}
+
+#profile img.avatar,
+div.avatar {
+    border: 1px solid #eee;
+    width: 122px;
+    height: 122px;
+}
+
+#profile .btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+#profile .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
