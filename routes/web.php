@@ -34,3 +34,28 @@ Route::get('admin/products/{id?}', 'Admin\AdminProductsController@show');
 Route::post('admin/products', 'Admin\AdminProductsController@create');
 Route::post('admin/products/{$id}', 'Admin\AdminProductsController@update');
 Route::delete('admin/products/{$id}', 'Admin\AdminProductsController@delete');
+
+Route::get('/panel',function (){
+    return view('layouts/panel');
+});
+Route::get('/personels',function (){
+    return view('admin/personels');
+});
+Route::get('/personels/{id}',function (){
+    $id = 1;
+    return view('admin/personels')->with(
+        ["id"=>1]
+    );
+});
+Route::get('/orders',function (){
+    return view('admin/orders');
+});
+Route::get('/profile',function (){
+    return view('admin/profile');
+});
+Route::get('/products',function (){
+    return view('admin/products');
+});
+Route::get('/new-product',function (){
+    return view('admin/new-product');
+});
