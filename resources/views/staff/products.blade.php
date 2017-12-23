@@ -62,7 +62,7 @@
             </div>
         </div>
     @endsection
-    <a href="/admin/products">Go Back</a>
+    <a href="/products">Go Back</a>
     @else
         @section('content')
             @if (Auth::User()->role_id==1)

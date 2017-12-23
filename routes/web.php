@@ -61,7 +61,11 @@ Route::get('admin/orders/status/{status?}', 'OrdersController@index');
 Route::get('products/', 'ProductsController@index');
 Route::get('products/{id}', 'ProductsController@show');
 
+Route::get('tables', 'Table\TableController@index');
+Route::post('tables', 'Table\TableController@create');
+Route::get('tables/new', 'Table\TableController@newTable');
+Route::delete('tables/{id}', 'Table\TableController@destroy');
+
 // Route::get('personel/orders', 'OrdersController@index');
 // Route::get('personel/orders/{id}', 'OrdersController@show');
 // Route::post('personel/orders/{id}', 'OrdersController@accept');
-

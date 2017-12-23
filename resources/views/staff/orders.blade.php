@@ -43,7 +43,7 @@
             </div>
             </div>
             <div class="col-xs-12 text-left">
-                <form action="/admin/orders/{{$order->id}}" method="POST">
+                <form action="/orders/{{$order->id}}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="status_id" value="{{ $order->status_id }}">
                 @switch($order->status_id)
