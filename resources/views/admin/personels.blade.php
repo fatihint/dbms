@@ -23,6 +23,7 @@
                 </div>
             </div>
         </div>
+    </div>
         @endsection
         <a href="/admin/personels">Go Back</a>
         @else

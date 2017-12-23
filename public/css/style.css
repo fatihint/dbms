@@ -143,3 +143,97 @@ div.avatar {
     cursor: inherit;
     display: block;
 }
+/*-----------------------  Customer taslak  -----*/
+
+#customer-navbar .hm-gradient {
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+#customer-navbar .darken-grey-text {
+    color: #2E2E2E;
+}
+
+#customer-navbar .navbar .dropdown-menu a:hover {
+    color: #616161 !important;
+}
+#customer-navbar .darken-grey-text {
+    color: #2E2E2E;
+}
+
+/*-----------------------  Customer Order  -----*/
+#customer-order .image-main-section{
+    background-color: #f1f1f1;
+    padding: 20px 20px 20px 20px;
+}
+
+#customer-order .image-main-section{
+    margin-bottom:20px;
+}
+
+#customer-order .img-part{
+    border-radius: 5px;
+    margin:0;
+    border:1px solid #DDDDDD;
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+
+#customer-order .img-section{
+    padding: 5px;
+}
+
+#customer-order .img-section img{
+    width: 100%;
+}
+
+#customer-order .image-title h3{
+    margin:0;
+    color:#4C4C4C;
+    padding: 15px 0 8px 0;
+}
+
+#customer-order .image-description p{
+    color:#848484;
+}
+
+#customer-order .add-cart-btn{
+    border-radius:0;
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+#customer-order .btn-success{
+    margin-top: 10px;
+    width: 105px;
+}
+
+#customer-order #Order-amount{
+    width: 105px;
+}
+
+#customer-order #customer-order-title{
+    color: #000;
+}
+
+/*----------------  Customer Profile  -----*/
+
+#customer-profile img{
+    margin-top: 65px;
+}
+
+/*----------------  Customer home  -----*/
+
+#customer-home .navbar-brand{
+    margin-top: 15px;
+}
+
+#customer-home .profil-pic{
+    margin-top: 2px;
+}
+
+#customer-home #customer-name{
+    margin-right: 10px;
+}
+
+#customer-home #customer-logout{
+    margin-left: 30px;
+}
