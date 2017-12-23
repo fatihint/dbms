@@ -31,16 +31,15 @@ Route::get('login/{provider}/callback', 'Auth\RegisterController@handleProviderC
 
 Route::get('admin', 'Admin\AdminController@index');
 Route::get('admin/products/new', 'Admin\AdminController@newProduct');
-Route::get('admin/products/', 'ProductsController@index');
-Route::get('admin/products/{id}', 'ProductsController@show');
+
 Route::post('admin/products', 'Admin\AdminProductsController@create');
 Route::post('admin/products/{id}', 'Admin\AdminProductsController@update');
 Route::delete('admin/products/{id}', 'Admin\AdminProductsController@destroy');
 
-Route::get('admin/orders/', 'OrdersController@index');
-Route::get('admin/orders/{id}', 'OrdersController@show');
-Route::post('admin/orders/{id}', 'OrdersController@update');
-Route::delete('admin/orders/{id}', 'OrdersController@destroy');
+// Route::get('admin/orders/', 'OrdersController@index');
+// Route::get('admin/orders/{id}', 'OrdersController@show');
+// Route::post('admin/orders/{id}', 'OrdersController@update');
+// Route::delete('admin/orders/{id}', 'OrdersController@destroy');
 
 Route::get('admin/personels/new', 'Admin\AdminController@newPersonel');
 Route::get('admin/personels/', 'Admin\AdminPersonelsController@index');
@@ -51,8 +50,18 @@ Route::delete('admin/personels/{id}', 'Admin\AdminPersonelsController@destroy');
 Route::get('admin/customers/', 'Admin\AdminCustomers@index');
 Route::get('admin/customers/{id}', 'Admin\AdminCustomersController@show');
 
-Route::get('personel/products', 'ProductsController@index');
-Route::get('personel/products/{id?}', 'ProductsController@show');
-Route::get('personel/orders', 'OrdersController@index');
-Route::get('personel/orders/{id}', 'OrdersController@show');
-Route::post('personel/orders/{id}', 'OrdersController@accept');
+Route::get('personel', 'Personel\PersonelController@index');
+
+Route::get('orders', 'OrdersController@index');
+Route::get('orders/{id}', 'OrdersController@show');
+Route::post('orders/{id}', 'OrdersController@accept');
+Route::delete('orders/{id}', 'OrdersController@destroy');
+
+
+Route::get('products/', 'ProductsController@index');
+Route::get('products/{id}', 'ProductsController@show');
+
+
+// Route::get('personel/orders', 'OrdersController@index');
+// Route::get('personel/orders/{id}', 'OrdersController@show');
+// Route::post('personel/orders/{id}', 'OrdersController@accept');

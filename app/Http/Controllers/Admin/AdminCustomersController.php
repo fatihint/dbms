@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminCustomersController extends Controller
 {
@@ -14,11 +15,16 @@ class AdminCustomersController extends Controller
      */
     public function index()
     {
-        $customers = User::where('role_id', 3)->get();
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
+        }
+        else {
+            $customers = User::where('role_id', 3)->get();
 
-        return view('admin.customers')->with(
-            ["customers" => $customers]
-        );
+            return view('admin.customers')->with(
+                ["customers" => $customers]
+            );
+        }
     }
 
     /**
@@ -29,18 +35,22 @@ class AdminCustomersController extends Controller
      */
     public function show($id)
     {
-        $customer = User::where('role_id', 3)->where('id',$id);
-
-        // siparisleriyle ilgili sorgu gelecek.
-
-        if ($customer) {
-            return view('admin.customers')->with(
-                ['customer' => $customer]
-            );
-        } else {
-            return redirect('/admin/customers');
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
         }
+        else {
+            $customer = User::where('role_id', 3)->where('id',$id);
 
+            // siparisleriyle ilgili sorgu gelecek.
+
+            if ($customer) {
+                return view('admin.customers')->with(
+                    ['customer' => $customer]
+                );
+            } else {
+                return redirect('/admin/customers');
+            }
+        }
     }
 
     /**

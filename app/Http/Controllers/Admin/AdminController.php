@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function __construct()
@@ -14,16 +14,30 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('layouts.panel');
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
+        }
+        else {
+            return view('layouts.panel');
+        }
+
     }
 
     public function newProduct()
     {
-        return view('admin.new-product');
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
+        }
+        else
+            return view('admin.new-product');
     }
 
     public function newPersonel()
     {
-        return view('admin.new-personel');
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
+        }
+        else
+            return view('admin.new-personel');
     }
 }

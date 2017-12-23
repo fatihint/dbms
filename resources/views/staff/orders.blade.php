@@ -74,7 +74,7 @@
                                 <td>{{ $order->created_at }}</td>
                                 <td>{{ $order->status_id }}</td>
                                 <td>
-                                    <a href="/admin/orders/{{$order->id}}" class="btn btn-info btn-lg">Detay</a>
+                                    <a href="orders/{{$order->id}}" class="btn btn-info btn-lg">Detay</a>
                                     <input type="submit" class="btn btn-success btn-lg" value="Onayla">
                                 </td>
                             </tr>

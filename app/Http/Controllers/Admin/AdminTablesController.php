@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Table;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminTablesController extends Controller
 {
@@ -16,17 +17,22 @@ class AdminTablesController extends Controller
      */
     public function create(Request $request)
     {
-        $table = new Table;
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
+        }
+        else {
+            $table = new Table;
 
-        $table->name = $request->name;
-        $table->user_id = 0;
-        $table->save();
+            $table->name = $request->name;
+            $table->user_id = 0;
+            $table->save();
 
-        $message = 'Masa basariyla olusturuldu';
+            $message = 'Masa basariyla olusturuldu';
 
-        return view('staff.tables')->with(
-            ['message' => $message]
-        );
+            return view('staff.tables')->with(
+                ['message' => $message]
+            );
+        }
     }
 
 
@@ -38,12 +44,17 @@ class AdminTablesController extends Controller
      */
     public function destroy($id)
     {
-        Table::destroy($id);
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
+        }
+        else {
+            Table::destroy($id);
 
-        $message = 'Masa basariyla silindi';
+            $message = 'Masa basariyla silindi';
 
-        return view('staff.tables')->with(
-            ['message' => $message]
-        );
+            return view('staff.tables')->with(
+                ['message' => $message]
+            );
+        }
     }
 }
