@@ -91,16 +91,16 @@
                 <div class="col-xs-12">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link @if($status == 2) active @endif" href="/admin/orders/status/2">Onay Bekleyenler</a>
+                            <a class="nav-link @if($status == 2) active @endif" href="/orders/status/2">Onay Bekleyenler</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if($status == 3) active @endif" href="/admin/orders/status/3">Onaylananlar</a>
+                            <a class="nav-link @if($status == 3) active @endif" href="/orders/status/3">Onaylananlar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if($status == 4) active @endif" href="/admin/orders/status/4">Müşteriye Ulaşanlar</a>
+                            <a class="nav-link @if($status == 4) active @endif" href="/orders/status/4">Müşteriye Ulaşanlar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if($status == 5) active @endif" href="/admin/orders/status/5">Kapananlar</a>
+                            <a class="nav-link @if($status == 5) active @endif" href="/orders/status/5">Kapananlar</a>
                         </li>
                     </ul>
                 </div>

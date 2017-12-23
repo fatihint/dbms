@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
-    <form action="/admin/profile" method="POST" enctype="multipart/form-data">
+    <form action="/profile" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="profile" class="container">
             <div class="row">
@@ -24,7 +24,11 @@
                                     @if(isset($path))
                                         <img src="{{ $path }}" alt="">
                                     @else
-                                        <img src="{{ $user->image }}" alt="">
+                                        @if(is_null($user->image))
+                                            <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+                                        @else
+                                            <img src="{{ $user->image }}" alt="">
+                                        @endif
                                     @endif
                                     <br>
                                     <div class="form-group">

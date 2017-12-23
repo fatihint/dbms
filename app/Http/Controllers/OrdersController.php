@@ -58,7 +58,7 @@ class OrdersController extends Controller
         $order->updated_at = date('Y-m-d H:i:s');
         $order->save();
 
-        return redirect('/admin/orders/status/' . $request->status_id)->with('message', "Siparis durumu guncellendi.");
+        return redirect('/orders/status/' . $request->status_id)->with('message', "Siparis durumu guncellendi.");
     }
 
     /**

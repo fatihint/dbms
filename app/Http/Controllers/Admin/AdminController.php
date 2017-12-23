@@ -14,11 +14,11 @@ class AdminController extends Controller
 
     public function index()
     {
-        if (Auth::User()->role_id!=1) {
+        if (Auth::User()->role_id !=1) {
             return redirect('/home');
         }
         else {
-            return view('layouts.panel');
+            return redirect('/profile');
         }
 
     }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdminCustomersController extends Controller
 {
@@ -15,7 +17,7 @@ class AdminCustomersController extends Controller
      */
     public function index()
     {
-        if (Auth::User()->role_id!=1) {
+        if (Auth::user()->role_id !=1 ) {
             return redirect('/home');
         }
         else {
@@ -39,13 +41,23 @@ class AdminCustomersController extends Controller
             return redirect('/home');
         }
         else {
-            $customer = User::where('role_id', 3)->where('id',$id);
+            $customer = User::where('role_id', 3)->where('id',$id)->get()->first();
 
             // siparisleriyle ilgili sorgu gelecek.
-
             if ($customer) {
+
+                $path = NULL;
+
+                if(!is_null($customer->image)) {
+                    if(Storage::disk('local')->exists('public/user-images/' . $customer->image)){
+                        $path = asset('storage/user-images/' . $customer->image);
+                    } else {
+                        $path = $customer->image;
+                    }
+                }
+
                 return view('admin.customers')->with(
-                    ['customer' => $customer]
+                    ['customer' => $customer, 'path' => $path]
                 );
             } else {
                 return redirect('/admin/customers');

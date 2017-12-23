@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Personel;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PersonelController extends Controller
 {
@@ -15,6 +16,10 @@ class PersonelController extends Controller
 
     public function index()
     {
-        return view('layouts.panel');
+        if (Auth::user()->role_id != 2) {
+            return redirect('/home');
+        } else {
+            return view('layouts.panel');
+        }
     }
 }

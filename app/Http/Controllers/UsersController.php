@@ -42,13 +42,13 @@ class UsersController extends Controller
         if ($request->password != $request->password_again) {
             switch (Auth::user()->role_id){
                 case 1:
-                    return redirect('/admin/profile/')->with('message', "Parolalar uyusmuyor !");
+                    return redirect('/profile')->with('message', "Parolalar uyusmuyor !");
                     break;
                 case 2:
-                    return redirect('/personel/profile/')->with('message', "Parolalar uyusmuyor !");
+                    return redirect('/profile')->with('message', "Parolalar uyusmuyor !");
                     break;
                 case 3:
-                    return redirect('/customer/profile/')->with('message', "Parolalar uyusmuyor !");
+                    return redirect('/profile')->with('message', "Parolalar uyusmuyor !");
                     break;
             }
         }
@@ -62,10 +62,12 @@ class UsersController extends Controller
         }
 
         if (isset($request->image)) {
-            if(Storage::disk('local')->exists('public/user-images/' . $user->image)){
-                Storage::delete('public/menu-images/' . $user->image);
+            if ($user->image) {
+                if(Storage::disk('local')->exists('public/user-images/' . $user->image)){
+                    Storage::delete('public/user-images/' . $user->image);
+                }
             }
-            $request->file('image')->storeAs('public/user-images', $user->id . "." .$request->image->extension());
+            $request->file('image')->storeAs('public/user-images/', $user->id . "." .$request->image->extension());
             $user->image = $user->id . "." . $request->image->extension();
         }
 
@@ -73,13 +75,13 @@ class UsersController extends Controller
 
         switch (Auth::user()->role_id){
             case 1:
-                return redirect('/admin/profile/')->with('message', "Profil basariyla guncellendi");
+                return redirect('/profile')->with('message', "Profil basariyla guncellendi");
                 break;
             case 2:
-                return redirect('/personel/profile/')->with('message', "Profil basariyla guncellendi");
+                return redirect('/profile')->with('message', "Profil basariyla guncellendi");
                 break;
             case 3:
-                return redirect('/customer/profile/')->with('message', "Profil basariyla guncellendi");
+                return redirect('/profile')->with('message', "Profil basariyla guncellendi");
                 break;
         }
     }
