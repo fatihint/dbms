@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class AdminOrdersController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,13 @@ class AdminOrdersController extends Controller
     public function index()
     {
         $orders = Order::all();
+//
+//        foreach ($orders->products as $product) {
+//            return $product->pivot->amount;
+//        }
+//        die;
 
-        return view('admin.orders')->with(
+        return view('staff.orders')->with(
             ['orders' => $orders]
         );
     }
@@ -32,13 +36,17 @@ class AdminOrdersController extends Controller
     {
         $order = Order::find($id);
 
-        if ($order) {
-            return view('admin.orders')->with(
-                ['order' => $order]
-            );
-        } else {
-            return redirect('/admin/orders/');
+        if (!$order) {
+            if (Auth::user()->role_id == 1) {
+                return redirect('/admin/orders');
+            } else {
+                return redirect('/personel/orders');
+            }
         }
+
+        return view('staff.orders')->with(
+            ['order' => $order]
+        );
     }
 
 

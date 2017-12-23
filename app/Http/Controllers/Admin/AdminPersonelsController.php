@@ -33,18 +33,19 @@ class AdminPersonelsController extends Controller
     {
         $personel = new User;
 
+        if ($request->password != $request->password_again) {
+            return redirect('/admin/personels/new')->with('message',"Parolalar uyuşmuyor.");
+        }
+
         $personel->role_id = 2;
-        $personel->name = $request->name;
+        $personel->name = $request->name . " ". $request->lastname;
         $personel->email = $request->email;
+        $personel->password = bcrypt($request->password);
         $personel->created_at = date('Y-m-d H:i:s');
         $personel->updated_at = date('Y-m-d H:i:s');
         $personel->save();
 
-        $message = "Yeni personel basariyla eklendi";
-
-        return view('admin.personels')->with(
-            ['message' => $message]
-        );
+        return redirect('/admin/personels/' . $personel->id)->with('message',"Yeni personel basariyla eklendi.");
     }
 
     /**
@@ -55,7 +56,7 @@ class AdminPersonelsController extends Controller
      */
     public function show($id)
     {
-        $personel = User::where('role_id', 2)->where('id',$id);
+        $personel = User::where('role_id', 2)->where('id',$id)->get()->first();
 
         if ($personel) {
             return view('admin.personels')->with(
@@ -75,10 +76,7 @@ class AdminPersonelsController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        $message = "Personel basariyla silindi";
 
-        return view('admin.personels')->with(
-            ['message' => $message]
-        );
+        return redirect('admin/personels')->with('message', "Kullanici basariyla silindi.");
     }
 }

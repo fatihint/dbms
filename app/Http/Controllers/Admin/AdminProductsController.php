@@ -6,27 +6,12 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Mockery\Exception;
 
 class AdminProductsController extends Controller
 {
-    /**
-     * Show all products.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-        $products = Product::all();
-
-        return view('admin.products')->with(
-            ["products" => $products]
-        );
-
-    }
-
     /**
      * Insert new product
      *
@@ -35,8 +20,15 @@ class AdminProductsController extends Controller
     public function create(Request $request)
     {
 
+        if (!isset($request->image)) {
+            return redirect('/admin/products/new')->with('message', 'Urun gorseli secilmedi !');
+        }
+
+        $maxId = DB::table('products')->max('id');
+        $imageName = $maxId + 1;
+
         try {
-            $request->file('image')->storeAs('public/menu-images', $request->name . "." .$request->image->extension());
+            $request->file('image')->storeAs('public/menu-images', $imageName . "." .$request->image->extension());
         } catch (Exception $e) {
             dd($e);
         }
@@ -44,49 +36,13 @@ class AdminProductsController extends Controller
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price;
-        $product->image = $request->name . "." . $request->image->extension();
+        $product->image = $imageName . "." . $request->image->extension();
         $product->user_id = Auth::user()->id;
         $product->created_at = date('Y-m-d H:i:s');
         $product->updated_at = date('Y-m-d H:i:s');
         $product->save();
 
-        $message = "Urun basariyla eklendi";
-
-        return view('admin.products')->with(
-            ['message' => $message, 'product' => $product]
-        );
-
-    }
-
-    /**
-     * Display the specified product with id.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-        $product = Product::find($id);
-
-        $exists = Storage::disk('local')->exists('public/menu-images/'. $product->name .'.png');
-
-        if ($exists) {
-            $ext = '.png';
-        } else {
-            $ext = '.jpeg';
-        }
-
-        $path = asset('storage/menu-images/' . $product->name . $ext);
-
-        if ($product) {
-            return view('admin.products')->with(
-                ["product" => $product, "path" => $path]
-            );
-        } else {
-            return redirect('/admin/products');
-        }
-
+        return redirect('/admin/products/' . $product->id)->with('message',"Urun basariyla eklendi");
     }
 
     /**
@@ -102,19 +58,21 @@ class AdminProductsController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->updated_at = date('Y-m-d H:i:s');
+
+        // Request'te image geldiyse, eski resmi sil, yenisini kaydet
+        if (isset($request->image)) {
+            Storage::delete('public/menu-images/' . $product->image);
+            $request->file('image')->storeAs('public/menu-images', $id . "." .$request->image->extension());
+        }
+
         $product->save();
 
-        $message = "Urun basariyla guncellendi";
-
-        return view('admin.products')->with(
-            ['message' => $message, 'product' => $product]
-        );
+        return redirect('/admin/products/' . $product->id)->with('message',"Urun basariyla guncellendi");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -122,7 +80,7 @@ class AdminProductsController extends Controller
         Product::destroy($id);
         $message = "Urun basariyla silindi";
 
-        return view('admin.products')->with(
+        return view('staff.products')->with(
             ['message' => $message]
         );
 

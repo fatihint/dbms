@@ -8,19 +8,6 @@ use App\Http\Controllers\Controller;
 
 class AdminTablesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $tables = Table::all();
-
-        return view('admin.tables')->with(
-            ["tables" => $tables]
-        );
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -37,31 +24,9 @@ class AdminTablesController extends Controller
 
         $message = 'Masa basariyla olusturuldu';
 
-        return view('admin.tables')->with(
+        return view('staff.tables')->with(
             ['message' => $message]
         );
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-        $table = Table::find($id);
-
-        if ($table) {
-            return view('admin.tables')->with(
-                ["table" => $table]
-            );
-        } else {
-            return redirect('/admin/tables');
-        }
-
     }
 
 
@@ -77,7 +42,7 @@ class AdminTablesController extends Controller
 
         $message = 'Masa basariyla silindi';
 
-        return view('admin.tables')->with(
+        return view('staff.tables')->with(
             ['message' => $message]
         );
     }

@@ -75,11 +75,11 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMulti">
                     <li>
-                        <a href="#">Personel Listesi</a>
+                        <a href="/admin/personels">Personel Listesi</a>
                     </li>
 
                     <li>
-                        <a href="#">Müşteri Listesi</a>
+                        <a href="/admin/customers">Müşteri Listesi</a>
                     </li>
                 </ul>
             </li>
@@ -190,23 +190,16 @@
 </nav>
    <div class="content-wrapper">
       <div class="container-fluid">
-        <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
             </li>
             <li class="breadcrumb-item active">My Dashboard</li>
         </ol>
-        <!-- Icon Cards-->
-
-        <!-- Example DataTables Card-->
-
-        <!-- /.container-fluid-->
-        <!-- /.content-wrapper-->
         <footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
-                    <small>Copyright © Your Website 2017</small>
+                    <small>Copyright © CompactLab 2017</small>
                 </div>
             </div>
         </footer>
