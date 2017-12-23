@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPersonelsController extends Controller
 {
@@ -15,13 +16,16 @@ class AdminPersonelsController extends Controller
      */
     public function index()
     {
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
+        }
+        else {
+            $personels = User::where('role_id', 2)->get();
 
-        $personels = User::where('role_id', 2)->get();
-
-        return view('admin.personels')->with(
-            ["personels" => $personels]
-        );
-
+            return view('admin.personels')->with(
+                ["personels" => $personels]
+            );
+        }
     }
 
     /**
@@ -31,21 +35,26 @@ class AdminPersonelsController extends Controller
      */
     public function create(Request $request)
     {
-        $personel = new User;
-
-        if ($request->password != $request->password_again) {
-            return redirect('/admin/personels/new')->with('message',"Parolalar uyuşmuyor.");
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
         }
+        else{
+            $personel = new User;
 
-        $personel->role_id = 2;
-        $personel->name = $request->name . " ". $request->lastname;
-        $personel->email = $request->email;
-        $personel->password = bcrypt($request->password);
-        $personel->created_at = date('Y-m-d H:i:s');
-        $personel->updated_at = date('Y-m-d H:i:s');
-        $personel->save();
+            if ($request->password != $request->password_again) {
+                return redirect('/admin/personels/new')->with('message',"Parolalar uyuşmuyor.");
+            }
 
-        return redirect('/admin/personels/' . $personel->id)->with('message',"Yeni personel basariyla eklendi.");
+            $personel->role_id = 2;
+            $personel->name = $request->name . " ". $request->lastname;
+            $personel->email = $request->email;
+            $personel->password = bcrypt($request->password);
+            $personel->created_at = date('Y-m-d H:i:s');
+            $personel->updated_at = date('Y-m-d H:i:s');
+            $personel->save();
+
+            return redirect('/admin/personels/' . $personel->id)->with('message',"Yeni personel basariyla eklendi.");
+        }
     }
 
     /**

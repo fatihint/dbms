@@ -15,7 +15,6 @@ class ProductsController extends Controller
      */
     public function index()
     {
-
         $products = Product::all();
 
         return view('staff.products')->with(
@@ -33,13 +32,8 @@ class ProductsController extends Controller
     {
 
         $product = Product::find($id);
-
         if (!$product) {
-            if (Auth::user()->role_id == 1) {
-                return redirect('/admin/products');
-            } else {
-                return redirect('/personel/products');
-            }
+                return redirect('/products');
         }
 
         $path = asset('storage/menu-images/' . $product->image);

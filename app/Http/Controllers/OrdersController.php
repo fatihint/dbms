@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -32,16 +33,13 @@ class OrdersController extends Controller
         $order = Order::find($id);
 
         if (!$order) {
-            if (Auth::user()->role_id == 1) {
-                return redirect('/admin/orders');
-            } else {
-                return redirect('/personel/orders');
-            }
+                return redirect('orders');
         }
-
-        return view('staff.orders')->with(
-            ['order' => $order]
-        );
+        else {
+            return view('staff.orders')->with(
+                ['order' => $order]
+            );
+        }
     }
 
 

@@ -179,7 +179,8 @@
 
                                     </form>
                                     @endif
-                                    <a href="/admin/orders/{{$order->id}}" class="btn btn-info">Detay</a>
+                                    <a href="/orders/{{$order->id}}" class="btn btn-info">Detay</a>
+                                    <input type="submit" class="btn btn-success btn-lg" value="Onayla">
                                 </td>
                             </tr>
                         @endforeach

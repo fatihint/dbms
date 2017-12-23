@@ -15,6 +15,6 @@ class PersonelController extends Controller
 
     public function index()
     {
-        return view('personel.orders');
+        return view('layouts.panel');
     }
 }

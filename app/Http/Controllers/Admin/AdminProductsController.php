@@ -19,30 +19,35 @@ class AdminProductsController extends Controller
      */
     public function create(Request $request)
     {
-
-        if (!isset($request->image)) {
-            return redirect('/admin/products/new')->with('message', 'Urun gorseli secilmedi !');
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
         }
+        else {
 
-        $maxId = DB::table('products')->max('id');
-        $imageName = $maxId + 1;
+            if (!isset($request->image)) {
+                return redirect('/admin/products/new')->with('message', 'Urun gorseli secilmedi !');
+            }
 
-        try {
-            $request->file('image')->storeAs('public/menu-images', $imageName . "." .$request->image->extension());
-        } catch (Exception $e) {
-            dd($e);
+            $maxId = DB::table('products')->max('id');
+            $imageName = $maxId + 1;
+
+            try {
+                $request->file('image')->storeAs('public/menu-images', $imageName . "." .$request->image->extension());
+            } catch (Exception $e) {
+                dd($e);
+            }
+
+            $product = new Product;
+            $product->name = $request->name;
+            $product->price = $request->price;
+            $product->image = $imageName . "." . $request->image->extension();
+            $product->user_id = Auth::user()->id;
+            $product->created_at = date('Y-m-d H:i:s');
+            $product->updated_at = date('Y-m-d H:i:s');
+            $product->save();
+
+            return redirect('/products/' . $product->id)->with('message',"Urun basariyla eklendi");
         }
-
-        $product = new Product;
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->image = $imageName . "." . $request->image->extension();
-        $product->user_id = Auth::user()->id;
-        $product->created_at = date('Y-m-d H:i:s');
-        $product->updated_at = date('Y-m-d H:i:s');
-        $product->save();
-
-        return redirect('/admin/products/' . $product->id)->with('message',"Urun basariyla eklendi");
     }
 
     /**
@@ -53,21 +58,25 @@ class AdminProductsController extends Controller
      */
     public function update($id, Request $request)
     {
-
-        $product = Product::find($id);
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->updated_at = date('Y-m-d H:i:s');
-
-        // Request'te image geldiyse, eski resmi sil, yenisini kaydet
-        if (isset($request->image)) {
-            Storage::delete('public/menu-images/' . $product->image);
-            $request->file('image')->storeAs('public/menu-images', $id . "." .$request->image->extension());
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
         }
+        else {
+            $product = Product::find($id);
+            $product->name = $request->name;
+            $product->price = $request->price;
+            $product->updated_at = date('Y-m-d H:i:s');
 
-        $product->save();
+            // Request'te image geldiyse, eski resmi sil, yenisini kaydet
+            if (isset($request->image)) {
+                Storage::delete('public/menu-images/' . $product->image);
+                $request->file('image')->storeAs('public/menu-images', $id . "." .$request->image->extension());
+            }
 
-        return redirect('/admin/products/' . $product->id)->with('message',"Urun basariyla guncellendi");
+            $product->save();
+
+            return redirect('/products/' . $product->id)->with('message',"Urun basariyla guncellendi");
+        }
     }
 
     /**
@@ -77,12 +86,16 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id);
-        $message = "Urun basariyla silindi";
+        if (Auth::User()->role_id!=1) {
+            return redirect('/home');
+        }
+        else {
+            Product::destroy($id);
+            $message = "Urun basariyla silindi";
 
-        return view('staff.products')->with(
-            ['message' => $message]
-        );
-
+            return view('staff.products')->with(
+                ['message' => $message]
+            );
+        }
     }
 }
