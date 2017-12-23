@@ -31,73 +31,30 @@ Route::get('login/{provider}/callback', 'Auth\RegisterController@handleProviderC
 
 Route::get('admin', 'Admin\AdminController@index');
 Route::get('admin/products/new', 'Admin\AdminController@newProduct');
-Route::get('admin/products/', 'Admin\AdminProductsController@index');
-Route::get('admin/products/{id}', 'Admin\AdminProductsController@show');
+
 Route::post('admin/products', 'Admin\AdminProductsController@create');
 Route::post('admin/products/{id}', 'Admin\AdminProductsController@update');
 Route::delete('admin/products/{id}', 'Admin\AdminProductsController@destroy');
 
-Route::get('admin/orders/', 'Admin\AdminOrdersController@index');
-Route::get('admin/orders/{id}', 'Admin\AdminOrdersController@show');
-Route::post('admin/orders/{id}', 'Admin\AdminOrdersController@update');
-Route::delete('admin/orders/{id}', 'Admin\AdminOrdersController@destroy');
+Route::get('admin/personels/new', 'Admin\AdminController@newPersonel');
+Route::get('admin/personels/', 'Admin\AdminPersonelsController@index');
+Route::get('admin/personels/{id}', 'Admin\AdminPersonelsController@show');
+Route::post('admin/personels/','Admin\AdminPersonelsController@create');
+Route::delete('admin/personels/{id}', 'Admin\AdminPersonelsController@destroy');
 
-Route::get('personel/products', 'Personel\PersonelProductsController@index');
-Route::get('personel/products/{id?}', 'Personel\PersonelProductsController@show');
-Route::get('personel/orders', 'Personel\PersonelOrdersController@index');
-Route::get('personel/orders/{id}', 'Personel\PersonelOrdersController@show');
-Route::post('personel/orders/{id}', 'Personel\PersonelOrdersController@accept');
-Route::get('/panel',function (){
-    return view('layouts/panel');
-});
-Route::get('/customer-home',function (){
-    return view('layouts/customer-home');
-});
-Route::get('/personels',function (){
-    return view('admin/personels');
-});
-Route::get('/personels/{id}',function (){
-    $idd = 1;
-    return view('admin/personels')->with(
-        ["id"=>1]
-    );
-});
-Route::get('/orders/{id}',function (){
-    $id = 2;
-    return view('admin/orders')->with(
-        ["id"=>2]
-    );
-});
-Route::get('/orders',function (){
-    return view('admin/orders');
-});
-Route::get('/profile',function (){
-    return view('admin/profile');
-});
-Route::get('/products',function (){
-    return view('admin/products');
-});
-Route::get('/new-product',function (){
-    return view('admin/new-product');
-});
-Route::get('/new-personel',function (){
-    return view('admin/new-personel');
-});
-Route::get('/eren',function (){
-    return view('home');
-});
-Route::get('customer/orders',function (){
-    return view('customer/orders');
-});
-Route::get('customer/profile',function (){
-    return view('customer/profile');
-});
-Route::get('customer/orders-history/{id}',function (){
-    $id = 1;
-    return view('customer/orders-history')->with(
-        ["id"=>1]
-    );
-});
-Route::get('customer/orders-history',function (){
-    return view('customer/orders-history');
-});
+Route::get('admin/customers/', 'Admin\AdminCustomersController@index');
+Route::get('admin/customers/{id}', 'Admin\AdminCustomersController@show');
+
+Route::get('personel', 'Personel\PersonelController@index');
+
+Route::get('orders', 'OrdersController@index');
+Route::get('orders/{id}', 'OrdersController@show');
+Route::post('orders/{id}', 'OrdersController@accept');
+Route::delete('orders/{id}', 'OrdersController@destroy');
+Route::get('orders/status/{status?}', 'OrdersController@index');
+
+Route::get('products/', 'ProductsController@index');
+Route::get('products/{id}', 'ProductsController@show');
+
+Route::get('profile', 'UsersController@index');
+Route::post('profile', 'UsersController@update');

@@ -102,11 +102,13 @@ class RegisterController extends Controller
         } else {
 
             // create new user with provider
-            $user = User::firstOrCreate(
-                ['email' => $socialUser->getEmail()],
-                ['name' => $socialUser->getName()]
-            );
-
+            $user = new User;
+            $user->image = $socialUser->getAvatar();
+            $user->name = $socialUser->getName();
+            $user->email = $socialUser->getEmail();
+            $user->created_at = date('Y-m-d H:i:s');
+            $user->updated_at = date('Y-m-d H:i:s');
+            $user->save();
 
             $user->socialProviders()->create(
                 ['provider_id' => $socialUser->getId(), 'provider' => $provider]

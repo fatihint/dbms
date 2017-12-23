@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
+use Auth;
 use App\Order;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class AdminOrdersController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($status = 2)
     {
-        $orders = Order::all();
+        $orders = Order::where('status_id', $status)->get();
 
-        return view('admin.orders')->with(
-            ['orders' => $orders]
+        return view('staff.orders')->with(
+            ['orders' => $orders, 'status' => $status]
         );
     }
 
@@ -32,12 +32,13 @@ class AdminOrdersController extends Controller
     {
         $order = Order::find($id);
 
-        if ($order) {
-            return view('admin.orders')->with(
+        if (!$order) {
+                return redirect('orders');
+        }
+        else {
+            return view('staff.orders')->with(
                 ['order' => $order]
             );
-        } else {
-            return redirect('/admin/orders/');
         }
     }
 
@@ -49,14 +50,15 @@ class AdminOrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         $order = Order::find($id);
 
-        $order->status_id = $request->status_id;
+        $order->status_id = $request->status_id + 1;
         $order->updated_at = date('Y-m-d H:i:s');
         $order->save();
 
+        return redirect('/orders/status/' . $request->status_id)->with('message', "Siparis durumu guncellendi.");
     }
 
     /**
