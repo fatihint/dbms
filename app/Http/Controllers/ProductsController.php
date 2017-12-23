@@ -42,7 +42,6 @@ class ProductsController extends Controller
             }
         }
 
-
         $path = asset('storage/menu-images/' . $product->image);
 
         return view('staff.products')->with(

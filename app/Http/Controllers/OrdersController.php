@@ -12,17 +12,12 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($status = 2)
     {
-        $orders = Order::all();
-//
-//        foreach ($orders->products as $product) {
-//            return $product->pivot->amount;
-//        }
-//        die;
+        $orders = Order::where('status_id', $status)->get();
 
         return view('staff.orders')->with(
-            ['orders' => $orders]
+            ['orders' => $orders, 'status' => $status]
         );
     }
 
@@ -57,14 +52,15 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         $order = Order::find($id);
 
-        $order->status_id = $request->status_id;
+        $order->status_id = $request->status_id + 1;
         $order->updated_at = date('Y-m-d H:i:s');
         $order->save();
 
+        return redirect('/admin/orders/status/' . $request->status_id)->with('message', "Siparis durumu guncellendi.");
     }
 
     /**

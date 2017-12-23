@@ -11,7 +11,7 @@
                 <img src="{{$path}}" class="img-responsive" width="100%">
                     <br>
                     <br>
-                    <form class="form-horizontal" method="POST" action="/admin/products/{{$product->id}}" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="/admin/products/{{$product->id}}" enctype="multipart/form-data" >
                         {{ csrf_field() }}
                         <fieldset>
                             <div class="form-group">
