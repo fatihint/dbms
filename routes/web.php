@@ -66,6 +66,11 @@ Route::post('tables', 'Table\TableController@create');
 Route::get('tables/new', 'Table\TableController@newTable');
 Route::delete('tables/{id}', 'Table\TableController@destroy');
 
+Route::get('mail', 'MailController@index');
+Route::get('sms', 'SmsController@index');
+
+
+
 // Route::get('personel/orders', 'OrdersController@index');
 // Route::get('personel/orders/{id}', 'OrdersController@show');
 // Route::post('personel/orders/{id}', 'OrdersController@accept');
