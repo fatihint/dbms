@@ -116,7 +116,7 @@
                         <tr>
                             <th>Masa No</th>
                             <th>Siparis içeriği</th>
-                            <th>Fiyatı</th>id
+                            <th>Fiyatı</th>
                             <th>Verildiği Tarih</th>
                             <th>Durum</th>
                             <th>İşlem</th>
@@ -188,6 +188,7 @@
                     </table>
                 </div>
             </div>
+        </div>
 @endsection
 
 

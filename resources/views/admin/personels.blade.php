@@ -10,7 +10,7 @@
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                    <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+                    <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img"width="100%">
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container" >
@@ -43,7 +43,7 @@
                     <div class="col-lg-12">
 
                         <div class="clearfix">
-                            <h1 class="pull-left">Users</h1>
+                            <h1 class="pull-left">Personel Listesi</h1>
                             @if(session('message'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('message') }}

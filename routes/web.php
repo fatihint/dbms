@@ -58,3 +58,7 @@ Route::get('products/{id}', 'ProductsController@show');
 
 Route::get('profile', 'UsersController@index');
 Route::post('profile', 'UsersController@update');
+
+Route::get('statistics',function (){
+    return view('admin/statistics');
+});

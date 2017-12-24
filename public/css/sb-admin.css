@@ -330,7 +330,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   max-width: 40rem; }
 
 footer.sticky-footer {
-  position: absolute;
+  position: relative;
   right: 0;
   bottom: 0;
   width: 100%;
@@ -339,8 +339,8 @@ footer.sticky-footer {
   line-height: 55px; }
   @media (min-width: 992px) {
     footer.sticky-footer {
-      width: calc(100% - 250px); } }
+      } }
 
 @media (min-width: 992px) {
   body.sidenav-toggled footer.sticky-footer {
-    width: calc(100% - 55px); } }
+    } }

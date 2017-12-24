@@ -97,11 +97,18 @@ html, body {
     border-top:1px solid #dadada;
     padding-top:5px;
 }
+
 #product-detail.pricetext {
     font-weight:bold;
     font-size:1.4em;
 }
-/*----------Personel------*/
+
+.pull-left{
+    margin-bottom: 13px;
+    margin-left: 18px;
+}
+
+    /*----------Personel------*/
 #personels.details li {
     list-style: none;
 }
@@ -109,6 +116,7 @@ html, body {
     margin-bottom:10px;
 
 }
+
 
 /*---------- Profile  ------*/
 
@@ -143,6 +151,7 @@ div.avatar {
     cursor: inherit;
     display: block;
 }
+
 /*-----------------------  Customer taslak  -----*/
 
 #customer-navbar .hm-gradient {
@@ -236,4 +245,21 @@ div.avatar {
 
 #customer-home #customer-logout{
     margin-left: 30px;
+}
+
+/*----------------  Panel navbar-----*/
+#mainNav a{
+    color: white;
+}
+#mainNav #liste a{
+    color: black;
+    font-size:20px;
+    margin-left: 25px;
+}
+.dropdown{
+margin-top: 10px;
+}
+
+.fa-sign-out{
+    margin-top: 10px;
 }

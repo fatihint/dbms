@@ -20,9 +20,9 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 text-center">
+                                <div class="col-md-6 text-center">
                                     @if(isset($path))
-                                        <img src="{{ $path }}" alt="">
+                                        <img src="{{ $path }}" alt="" width="400">
                                     @else
                                         @if(is_null($user->image))
                                             <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="user_last_name">Ad Soyad</label>
                                         <p>{{ $user->name }}</p>
@@ -56,12 +56,8 @@
                                             <input name="password_again" type="password" class="form-control" id="user_middle_name">
                                         </div>
 
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-user-modal">
-                                            Delete user
-                                        </button>
-
                                         <div class="form-group">
-                                            <input type="submit" class="btn btn-primary" value="Kaydet">
+                                            <input type="submit" class="btn btn-primary" value="Kaydet"style="width: 108px;">
                                         </div>
 
                                     @if(session('message'))

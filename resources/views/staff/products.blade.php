@@ -8,7 +8,7 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                <img src="{{$path}}" class="img-responsive" width="100%">
+                <img src="{{$path}}" class="img-responsive" width="300">
                     <br>
                     <br>
                     <form class="form-horizontal" method="POST" action="/admin/products/{{$product->id}}" enctype="multipart/form-data" >
@@ -66,8 +66,8 @@
     @else
         @section('content')
             @if (Auth::User()->role_id==1)
-                <div class="pull-right top-page-ui">
-                    <a href="/admin/products/new" class="btn btn-primary pull-right">
+                <div class="pull-left top-page-ui">
+                    <a href="/admin/products/new" class="btn btn-primary pull-left">
                         <i class="fa fa-plus-circle fa-lg"></i> Yeni Ürün Ekle
                     </a>
                 </div>

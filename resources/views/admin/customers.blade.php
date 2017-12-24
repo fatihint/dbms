@@ -1,6 +1,7 @@
 @extends('layouts.panel')
 @if(isset($customer))
 @section('content')
+    <div id="customer-profile" class="container">
     @if(session('message'))
         <div class="alert alert-success" role="alert">
             {{ session('message') }}
@@ -32,11 +33,6 @@
 @else
 @section('content')
     @if (Auth::User()->role_id==1)
-        <div class="pull-right top-page-ui">
-            <a href="/admin/products/new" class="btn btn-primary pull-right">
-                <i class="fa fa-plus-circle fa-lg"></i> Yeni Ürün Ekle
-            </a>
-        </div>
     @endif
     <div class="card-body">
         <div class="table-responsive">
@@ -74,5 +70,6 @@
         </div>
     </div>
     </div>
+
 @endsection
 @endif
